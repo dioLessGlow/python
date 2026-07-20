@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python 学习问题汇总</title>
+    <style>
+        :root {
+            --bg-primary: #f6f8fa;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f3f4f6;
+            --border-color: #d0d7de;
+            --text-primary: #1f2328;
+            --text-secondary: #656d76;
+            --accent-green: #2da44e;
+            --accent-green-light: #dafbe1;
+            --accent-green-dark: #1a7f37;
+            --accent-gray: #6e7781;
+            --accent-gray-light: #eaeef2;
+            --shadow: 0 1px 3px rgba(31, 35, 40, 0.04), 0 1px 2px rgba(31, 35, 40, 0.04);
+            --shadow-hover: 0 8px 24px rgba(31, 35, 40, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-green-dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-top: 4px;
+        }
+
+        .section {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .section:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .section-header {
+            padding: 18px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-secondary);
+            transition: background-color 0.15s;
+            user-select: none;
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .section-header:hover {
+            background-color: var(--bg-tertiary);
+        }
+
+        .section-header h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+        }
+
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            background-color: var(--accent-green-light);
+        }
+
+        .toggle-icon {
+            color: var(--accent-gray);
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .section.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .section.active .section-content {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .qa-list {
+            padding: 0 24px 20px;
+        }
+
+        .qa-item {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .qa-item:last-child {
+            border-bottom: none;
+        }
+
+        .question {
+            font-weight: 600;
+            color: var(--accent-green-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .question::before {
+            content: "Q";
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background-color: var(--accent-green);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .answer {
+            color: var(--text-primary);
+            padding-left: 32px;
+            position: relative;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .answer::before {
+            content: "A";
+            position: absolute;
+            left: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background-color: var(--accent-gray);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .answer code {
+            background-color: var(--bg-tertiary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.85em;
+            color: var(--accent-green-dark);
+            border: 1px solid var(--border-color);
+        }
+
+        .answer .code-block {
+            display: block;
+            background-color: var(--bg-tertiary);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 8px;
+            overflow-x: auto;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.82rem;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: var(--accent-green-dark);
+            font-weight: 600;
+        }
+
+        .error {
+            color: #cf222e;
+        }
+
+        .success {
+            color: var(--accent-green);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.75rem;
+            }
+            .stats {
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .stat-item {
+                padding: 12px 20px;
+            }
+            .section-header h2 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐍 Python 学习问题汇总</h1>
+            <p>记录学习过程中的问题与解答</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">分类</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">35+</div>
+                    <div class="stat-label">问题</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">已解决</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="section active">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><span class="section-icon">⚙️</span> 基础语法与运行</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="qa-list">
+                    <div class="qa-item">
+                        <div class="question">怎么运行 .py 文件？</div>
+                        <div class="answer">在终端输入 <code>python 文件名.py</code>。如果已经在 Python 交互模式（<code>>>></code>），先输入 <code>exit()</code> 退出，再运行文件。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">exit()、Ctrl+D、Ctrl+Z 有什么区别？</div>
+                        <div class="answer"><code>exit()</code> 通用；<code>Ctrl+D</code> 是 Linux/Mac 退出；<code>Ctrl+Z</code>+回车是 Windows 退出交互模式。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">cd . 和 cd .. 有什么区别？</div>
+                        <div class="answer"><code>cd .</code> 是当前目录（原地不动）；<code>cd ..</code> 是上级目录（返回上一层）。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">PowerShell 里 cd - 报错怎么办？</div>
+                        <div class="answer">PowerShell 不支持 <code>cd -</code>。用 <code>pushd</code> 记住位置，再用 <code>popd</code> 返回。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">Python 官网是什么？</div>
+                        <div class="answer"><a href="https://www.python.org" target="_blank">https://www.python.org</a>，可下载安装包、查看文档。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">import this 是什么？</div>
+                        <div class="answer">Python 的彩蛋，输出《Python之禅》（The Zen of Python），是 Python 社区的设计哲学指南。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">注释快捷键是什么？</div>
+                        <div class="answer">VS Code: 中 <code>Ctrl+/</code> 注释/取消注释当前行或选中的多行代码。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><span class="section-icon">📝</span> 字符串操作</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="qa-list">
+                    <div class="qa-item">
+                        <div class="question">字符串比较时怎么忽略大小写？</div>
+                        <div class="answer">用 <code>.lower()</code> 或 <code>.upper()</code> 转统一后再比较。例如：<code>a.lower() == 'sagdgvd'</code></div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">f-string 里 .title() 没生效？</div>
+                        <div class="answer"><span class="error">错误：</span><code>{name}.title()</code> → <span class="success">正确：</span><code>{name.title()}</code>，方法要放在花括号内。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">removeprefix('.txt') 没去掉后缀？</div>
+                        <div class="answer"><code>removeprefix()</code> 从开头移除，<code>removesuffix()</code> 从末尾移除。去后缀应该用 <code>removesuffix('.txt')</code>。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">s.lower().title() 的结果是什么？</div>
+                        <div class="answer">先全部转小写，再每个单词首字母大写。例如 <code>"hElLo wOrLD"</code> → <code>"hello world"</code> → <code>"Hello World"</code>。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">怎么按单词切片而不是按字符？</div>
+                        <div class="answer">先 <code>split()</code> 拆成单词列表，切片后再 <code>join()</code> 拼回字符串。<div class="code-block">words = a.split()<br>result = ' '.join(words[0:3])</div></div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">16/2 输出 8.0，怎么得到整数 8？</div>
+                        <div class="answer">用整除 <code>//</code>：<code>16 // 2</code> 输出 <code>8</code>。或者 <code>int(16 / 2)</code>。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">print(a) 和 a = print(p) 有什么区别？</div>
+                        <div class="answer"><code>print()</code> 只输出到屏幕，<span class="highlight">返回值永远是 None</span>。所以 <code>a = print(p)</code> 会让 <code>a = None</code>。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><span class="section-icon">📋</span> 列表操作</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="qa-list">
+                    <div class="qa-item">
+                        <div class="question">append() 传两个参数报错？</div>
+                        <div class="answer"><code>append()</code> 只能加一个元素。加多个用 <code>extend(['ms', 'fs'])</code> 或多次 <code>append()</code>。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">print(ip.sort()) 为什么输出 None？</div>
+                        <div class="answer"><code>sort()</code> 是原地排序，<span class="highlight">返回 None</span>。正确做法：先 <code>ip.sort()</code>，再 <code>print(ip)</code>。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">sort(reverse=True) 执行两次会怎样？</div>
+                        <div class="answer">每次 <code>sort()</code> 都是重新排序。执行两次 <code>reverse=True</code> 会回到升序（降序→升序）。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">num2 = num[:] 和 num2 = num 有什么区别？</div>
+                        <div class="answer"><code>num[:]</code> 是<span class="success">复制新列表</span>（独立）；<code>num</code> 是<span class="error">引用同一列表</span>（一改都变）。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">list(value) 报错 TypeError？</div>
+                        <div class="answer"><code>value</code> 是整数，<code>list()</code> 需要可迭代对象。直接 <code>print(value)</code> 即可。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><span class="section-icon">🔑</span> 条件判断与字典</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="qa-list">
+                    <div class="qa-item">
+                        <div class="question">for i in len(alien_color) 报错？</div>
+                        <div class="answer"><code>len()</code> 返回整数，不可迭代。用 <code>range(len(alien_color))</code> 生成索引序列。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">if-elif 判断年龄为什么都输出"婴儿"？</div>
+                        <div class="answer"><code>if-elif</code> 从上到下执行，满足就跳出。<code>age >= 0</code> 包含所有年龄，条件应从大到小排列或用区间。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">空列表 users=[] 怎么处理？</div>
+                        <div class="answer">空列表 <code>for</code> 循环体不执行。要在循环外先用 <code>if not users:</code> 判断处理。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">用户名比较怎么不区分大小写？</div>
+                        <div class="answer">创建全小写副本：<code>current_users_lower = [u.lower() for u in current_users]</code>，新用户名也转小写再比较。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">cities={vs1:...} 报错 NameError？</div>
+                        <div class="answer">字典键是字符串要加引号：<code>'vs1':</code>。没引号 Python 会当成变量名。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">字典遍历 person[0] 报错？</div>
+                        <div class="answer">字典用<span class="highlight">键</span>访问，不是索引。用 <code>person['first_name']</code> 或遍历 <code>.items()</code>。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">.keys()、.values()、.items() 区别？</div>
+                        <div class="answer"><code>.keys()</code> 返回键；<code>.values()</code> 返回值；<code>.items()</code> 返回键值对元组 <code>(key, value)</code>。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">字典怎么添加键值对？</div>
+                        <div class="answer"><code>alien_0['x_position'] = 0</code>。键不存在就<span class="success">添加</span>，存在就<span class="highlight">修改</span>。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">a_0={'genn','12'} 报错？</div>
+                        <div class="answer">这是<span class="error">集合</span>（set），不是字典。字典要用冒号分隔键值：<code>{'genn': '12'}</code>。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><span class="section-icon">🔄</span> 输入与循环</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="qa-list">
+                    <div class="qa-item">
+                        <div class="question">input() 怎么用？</div>
+                        <div class="answer">返回<span class="highlight">字符串</span>。要获取数字需转换：<code>int(input("请输入："))</code>。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">while 循环 num+1 为什么死循环？</div>
+                        <div class="answer"><code>num + 1</code> 只计算没赋值！要用 <code>num = num + 1</code> 或 <code>num += 1</code>。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">for value in range(): print(list(value)) 报错？</div>
+                        <div class="answer"><code>value</code> 是整数，<code>list()</code> 需要可迭代对象。直接 <code>print(value)</code> 即可。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">列表输出怎么去掉引号？</div>
+                        <div class="answer">引号是列表的显示格式。用 <code>for</code> 遍历逐个 <code>print()</code> 元素，不要直接 <code>print(列表)</code>。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2><span class="section-icon">🐛</span> 代码调试</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="qa-list">
+                    <div class="qa-item">
+                        <div class="question">print(cars==='vsvv') 报错？</div>
+                        <div class="answer">Python <span class="error">没有 ===</span>，只有 <code>==</code>（值相等）和 <code>is</code>（同一对象）。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">max(num) 为什么没输出？</div>
+                        <div class="answer"><code>max()</code> 返回结果但不自动显示。要用 <code>print(max(num))</code> 才能看到。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">截图里红色的 False 是什么？</div>
+                        <div class="answer">VS Code: Code Runner 扩展的<span class="highlight">运行结果</span>，不是代码，无法注释，只能关闭扩展设置。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="question">怎么只注释部分代码？</div>
+                        <div class="answer">选中要注释的行（可以部分选中多行），按 <code>Ctrl+/</code> 即可批量注释/取消注释。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>📖 学习书籍：《Python编程：从入门到实践》</p>
+            <p>用 ❤️ 和 Python 构建 | 部署于 <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleSection(header) {
+            const section = header.parentElement;
+            section.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
