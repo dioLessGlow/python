@@ -6,227 +6,238 @@
       "file": "Day_1__基础入门.md",
       "x": 50,
       "y": 50,
-      "width": 250,
-      "height": 100
+      "width": 200,
+      "height": 80,
+      "text": "Day 1\n基础入门"
     },
     {
       "id": "d2",
       "type": "file",
       "file": "Day_2__循环与函数.md",
-      "x": 350,
-      "y": 50,
-      "width": 250,
-      "height": 100
+      "x": 50,
+      "y": 150,
+      "width": 200,
+      "height": 80,
+      "text": "Day 2\n循环与函数"
     },
     {
       "id": "d3",
       "type": "file",
       "file": "Day_3__文件与异常.md",
-      "x": 650,
-      "y": 50,
-      "width": 250,
-      "height": 100
+      "x": 50,
+      "y": 250,
+      "width": 200,
+      "height": 80,
+      "text": "Day 3\n文件与异常"
     },
     {
       "id": "d4",
       "type": "file",
       "file": "Day_4__JSON与存储.md",
-      "x": 950,
-      "y": 50,
-      "width": 250,
-      "height": 100
+      "x": 50,
+      "y": 350,
+      "width": 200,
+      "height": 80,
+      "text": "Day 4\nJSON与存储"
     },
     {
       "id": "c1",
       "type": "file",
       "file": "第1章__起步.md",
-      "x": 50,
-      "y": 250,
-      "width": 220,
-      "height": 80
+      "x": 300,
+      "y": 50,
+      "width": 150,
+      "height": 80,
+      "text": "第1章\n起步"
     },
     {
       "id": "c2",
       "type": "file",
       "file": "第2章__变量和简单数据类型.md",
-      "x": 300,
-      "y": 250,
-      "width": 220,
-      "height": 80
+      "x": 480,
+      "y": 50,
+      "width": 150,
+      "height": 80,
+      "text": "第2章\n变量"
     },
     {
       "id": "c3",
       "type": "file",
       "file": "第3章__列表简介.md",
-      "x": 550,
-      "y": 250,
-      "width": 220,
-      "height": 80
+      "x": 660,
+      "y": 50,
+      "width": 150,
+      "height": 80,
+      "text": "第3章\n列表"
     },
     {
       "id": "c4",
       "type": "file",
       "file": "第4章__操作列表.md",
-      "x": 800,
-      "y": 250,
-      "width": 220,
-      "height": 80
+      "x": 840,
+      "y": 50,
+      "width": 150,
+      "height": 80,
+      "text": "第4章\n操作列表"
     },
     {
       "id": "c5",
       "type": "file",
       "file": "第5章__if语句.md",
-      "x": 50,
-      "y": 430,
-      "width": 220,
-      "height": 80
+      "x": 300,
+      "y": 150,
+      "width": 150,
+      "height": 80,
+      "text": "第5章\nif语句"
     },
     {
       "id": "c6",
       "type": "file",
       "file": "第6章__字典.md",
-      "x": 300,
-      "y": 430,
-      "width": 220,
-      "height": 80
+      "x": 480,
+      "y": 150,
+      "width": 150,
+      "height": 80,
+      "text": "第6章\n字典"
     },
     {
       "id": "c7",
       "type": "file",
       "file": "第7章__用户输入和while循环.md",
-      "x": 550,
-      "y": 430,
-      "width": 220,
-      "height": 80
+      "x": 660,
+      "y": 150,
+      "width": 180,
+      "height": 80,
+      "text": "第7章\nwhile循环"
     },
     {
       "id": "c8",
       "type": "file",
       "file": "第8章__函数.md",
-      "x": 800,
-      "y": 430,
-      "width": 220,
-      "height": 80
+      "x": 870,
+      "y": 150,
+      "width": 150,
+      "height": 80,
+      "text": "第8章\n函数"
     },
     {
       "id": "c9",
       "type": "file",
       "file": "第9章__类.md",
-      "x": 50,
-      "y": 610,
-      "width": 220,
-      "height": 80
+      "x": 300,
+      "y": 260,
+      "width": 150,
+      "height": 80,
+      "text": "第9章\n类"
     },
     {
       "id": "c10",
       "type": "file",
       "file": "第10章__文件和异常.md",
-      "x": 300,
-      "y": 610,
-      "width": 220,
-      "height": 80
+      "x": 480,
+      "y": 260,
+      "width": 150,
+      "height": 80,
+      "text": "第10章\n文件异常"
     },
     {
       "id": "c11",
       "type": "file",
       "file": "第11章__测试代码.md",
-      "x": 550,
-      "y": 610,
-      "width": 220,
-      "height": 80
-    },
-    {
-      "id": "ap",
-      "type": "file",
-      "file": "附录.md",
-      "x": 50,
-      "y": 790,
-      "width": 220,
-      "height": 80
+      "x": 660,
+      "y": 260,
+      "width": 150,
+      "height": 80,
+      "text": "第11章\n测试"
     },
     {
       "id": "p1",
       "type": "file",
       "file": "项目1__外星人入侵（Pygame）.md",
-      "x": 550,
-      "y": 790,
-      "width": 220,
-      "height": 80
+      "x": 870,
+      "y": 260,
+      "width": 150,
+      "height": 80,
+      "text": "项目1\n外星人入侵"
     },
     {
       "id": "p2",
       "type": "file",
       "file": "项目2__数据可视化.md",
-      "x": 800,
-      "y": 790,
-      "width": 220,
-      "height": 80
+      "x": 870,
+      "y": 360,
+      "width": 150,
+      "height": 80,
+      "text": "项目2\n数据可视化"
     },
     {
       "id": "p3",
       "type": "file",
       "file": "项目3__Web应用程序（Django）.md",
-      "x": 1050,
-      "y": 790,
-      "width": 220,
-      "height": 80
+      "x": 870,
+      "y": 460,
+      "width": 180,
+      "height": 80,
+      "text": "项目3\nWeb应用"
+    },
+    {
+      "id": "ap",
+      "type": "file",
+      "file": "附录.md",
+      "x": 300,
+      "y": 380,
+      "width": 150,
+      "height": 60,
+      "text": "附录"
     }
   ],
   "edges": [
     {
       "id": "e_d1_c2",
       "fromNode": "d1",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "c2",
-      "toSide": "top",
+      "toSide": "left",
       "label": ""
     },
     {
       "id": "e_d1_c3",
       "fromNode": "d1",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "c3",
-      "toSide": "top",
-      "label": ""
-    },
-    {
-      "id": "e_d1_c6",
-      "fromNode": "d1",
-      "fromSide": "bottom",
-      "toNode": "c6",
-      "toSide": "top",
+      "toSide": "left",
       "label": ""
     },
     {
       "id": "e_d2_c7",
       "fromNode": "d2",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "c7",
-      "toSide": "top",
+      "toSide": "left",
       "label": ""
     },
     {
       "id": "e_d2_c8",
       "fromNode": "d2",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "c8",
-      "toSide": "top",
+      "toSide": "left",
       "label": ""
     },
     {
       "id": "e_d3_c10",
       "fromNode": "d3",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "c10",
-      "toSide": "top",
+      "toSide": "left",
       "label": ""
     },
     {
       "id": "e_d4_c10",
       "fromNode": "d4",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "c10",
-      "toSide": "top",
+      "toSide": "left",
       "label": ""
     },
     {
@@ -256,9 +267,9 @@
     {
       "id": "e_c4_c5",
       "fromNode": "c4",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "c5",
-      "toSide": "top",
+      "toSide": "left",
       "label": ""
     },
     {
@@ -288,9 +299,9 @@
     {
       "id": "e_c8_c9",
       "fromNode": "c8",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "c9",
-      "toSide": "top",
+      "toSide": "left",
       "label": ""
     },
     {
@@ -336,49 +347,57 @@
     {
       "id": "e_c9_p1",
       "fromNode": "c9",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "p1",
-      "toSide": "top",
+      "toSide": "left",
       "label": ""
     },
     {
       "id": "e_c10_p2",
       "fromNode": "c10",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toNode": "p2",
-      "toSide": "top",
+      "toSide": "left",
       "label": ""
     },
     {
       "id": "e_c11_p3",
       "fromNode": "c11",
+      "fromSide": "right",
+      "toNode": "p3",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_p1_p2",
+      "fromNode": "p1",
+      "fromSide": "bottom",
+      "toNode": "p2",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_p2_p3",
+      "fromNode": "p2",
       "fromSide": "bottom",
       "toNode": "p3",
       "toSide": "top",
       "label": ""
     },
     {
-      "id": "e_ap_p1",
-      "fromNode": "ap",
+      "id": "e_c11_ap",
+      "fromNode": "c11",
       "fromSide": "right",
-      "toNode": "p1",
+      "toNode": "ap",
       "toSide": "left",
       "label": ""
     },
     {
-      "id": "e_ap_p2",
-      "fromNode": "ap",
-      "fromSide": "right",
-      "toNode": "p2",
-      "toSide": "left",
-      "label": ""
-    },
-    {
-      "id": "e_ap_p3",
-      "fromNode": "ap",
-      "fromSide": "right",
-      "toNode": "p3",
-      "toSide": "left",
+      "id": "e_p3_ap",
+      "fromNode": "p3",
+      "fromSide": "left",
+      "toNode": "ap",
+      "toSide": "right",
       "label": ""
     }
   ]
