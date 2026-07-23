@@ -1,0 +1,122 @@
+    <div style="background:#dafbe1;border:1px solid #b4e0b4;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#1a7f37;">
+        <strong>  ️ 笔记文件位置：</strong><code>每日笔记/day1.docx</code> ~ <code>每日笔记/day4.docx</code>
+    </div>
+
+    <!-- DAY 1 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> Day 1 · 基础入门</span><span class="badge">12</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body open">
+        <div class="qa-item"><div class="q"><span class="tag">if逻辑</span>为什么 <code>age>=0</code> 导致所有年龄都是婴儿？</div><div class="a"><code>if-elif</code> 从上到下执行，<code>age>=0</code> 包含所有年龄，后面永不执行。<br><strong>修正：</strong>条件从大到小排列或用区间判断。
+        <pre>if age >= 65: print('老年人')
+elif age >= 18: print('中青年人')
+elif age >= 13: print('少年')
+elif age >= 4:  print('儿童')
+elif age >= 2:  print('幼儿')
+else:           print('婴儿')</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">空列表</span>空列表 <code>users=[]</code> 怎么处理？</div><div class="a">空列表 <code>for</code> 不执行。用 <code>if not users:</code> 先判断列表是否为空。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">变量未定义</span><code>if user not in users:</code> 报错？</div><div class="a"><code>user</code> 未定义。正确：<code>if not users:</code> 判断列表是否为空。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">大小写</span>用户名比较不区分大小写？</div><div class="a">创建小写副本：<pre>current_users_lower = [u.lower() for u in current_users]
+if new_user.lower() in current_users_lower: ...</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">错误</span><code>current_users.lower()</code> 报错？</div><div class="a">列表没有 <code>.lower()</code> 方法。要逐个字符串转小写。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">列表复制</span><code>current_users[:].lower()</code> 也报错？</div><div class="a"><code>[:]</code> 复制列表，列表仍然没有 <code>.lower()</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字典添加</span><code>alien_0['x_position'] = 0</code> 是添加？</div><div class="a">键不存在→<strong>添加</strong>；键存在→<strong>修改</strong>。Python自动判断。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字典 vs 集合</span><code>{'genn','12'}</code> 报错？</div><div class="a">这是<strong>集合</strong>不是字典。字典要 <code>{'genn': '12'}</code>（冒号）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字典访问</span><code>person(xin)</code> 语法错误？</div><div class="a">字典不是函数，用 <code>person[xin]</code> 访问值。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字典索引</span><code>person[0]</code> 报错？</div><div class="a">字典用键访问，不用索引。<code>person['first_name']</code> 才对。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字典遍历</span><code>for key in person</code> vs <code>.items()</code> 区别？</div><div class="a"><code>.items()</code> 更简洁高效，直接拿到键和值。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">省略标记</span><code>--snip--</code> 是什么？</div><div class="a">印刷时的省略写法，不是代码。实际运行要替换成真实内容。</div></div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> Day 2 · 循环与函数</span><span class="badge">14</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">死循环</span><code>while num<=5: num+1</code> 死循环？</div><div class="a"><code>num+1</code> 只计算不保存。正确：<code>num += 1</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">input位置</span>input 放循环外 vs 循环里？</div><div class="a">放循环外：只问一次。放循环里：每次循环都能输入新值。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">break</span><code>while True: break</code> vs 标志位？</div><div class="a"><code>while True + break</code> 更简洁，是 Python 惯用写法。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">函数return</span><code>names('chen','hui')</code> 没输出？</div><div class="a">函数 <code>return</code> 只是交回结果，要 <code>print()</code> 才能看到。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">函数print</span><code>describe_city('csac')</code> 为什么能输出？</div><div class="a">函数内部有 <code>print()</code>，直接显示。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">return位置</span><code>return</code> 后面有 <code>print()</code> 为什么不执行？</div><div class="a"><code>return</code> 立刻结束函数，后面代码永不执行。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">引号问题</span><code>return "full_name"</code> 输出什么？</div><div class="a">返回字符串 <code>"full_name"</code> 四个字。去引号才是变量值。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">函数参数</span>参数名可以重复吗？</div><div class="a">可以，参数是"占位符"，调用时传什么变量就是什么。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">pop移动</span>为什么要用 <code>messages.pop(0)</code>？</div><div class="a"><code>for</code> 只是看看不动原列表；<code>pop(0)</code> 拿出来，原列表会变。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">空参数</span>函数定义了但没被调用？</div><div class="a">定义了没调用相当于白写，函数不会自动执行。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">练习8.9</span>show_messages() 怎么打印全部消息？</div><div class="a">用 <code>print(message)</code> 不要用 <code>return message</code>，return 只返第一个。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">练习8.10</span>send_messages() 怎么写？</div><div class="a"><pre>def send_messages(messages, sent_messages):
+    while messages:
+        msg = messages.pop(0)
+        sent_messages.append(msg)</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">变量赋值</span><code>names[name]=contents</code> 报错？</div><div class="a"><code>name</code> 变量没定义。应该是输入变量 <code>name</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">多重退出</span>两个输入都要判断 <code>q</code> 退出？</div><div class="a">每个输入都要单独判断 <code>if name == 'q': break</code></div></div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> Day 3 · 文件与异常</span><span class="badge">13</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">rstrip</span><code>.rstrip()</code> 作用？</div><div class="a">去掉字符串末尾的空白字符（换行、空格等）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">splitlines</span><code>contents.splitlines().lstrip()</code> 报错？</div><div class="a"><code>splitlines()</code> 返回列表，列表没有 <code>.lstrip()</code>。要逐行处理。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">replace</span><code>test.replace('In','on')</code> 没生效？</div><div class="a">字符串不可变，<code>replace()</code> 返回新字符串，要接收：<code>test = test.replace(...)</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">write_text</span><code>path.write_text()</code> 会覆盖原内容？</div><div class="a">是的，<strong>覆盖写入</strong>。追加用 <code>with path.open('a') as f: f.write(...)</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">循环读取</span>for 循环里读文件只读了最后一个？</div><div class="a"><code>path.read_text()</code> 要放在循环<strong>内部</strong>，否则只处理最后一次。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">return位置</span><code>return</code> 在 for 循环里只能用一次？</div><div class="a"><code>return</code> 立即结束函数和循环。要全部返回用列表收集后在外 return。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">文件追加</span>怎么往文件追加内容？</div><div class="a"><pre>with path.open('a', encoding='utf-8') as f:
+    f.write('新内容\n')</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字符串拼接</span><code>contents += names + '\n'</code> 要 str() 吗？</div><div class="a"><code>input()</code> 返回字符串，直接拼即可，不需要 <code>str()</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">ZeroDivisionError</span>除零错误怎么处理？</div><div class="a"><pre>try:
+    answer = a / b
+except ZeroDivisionError:
+    print("不能除以零")</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">FileNotFoundError</span>文件不存在时怎么静默处理？</div><div class="a"><pre>try:
+    contents = path.read_text()
+except FileNotFoundError:
+    pass    # 静默跳过</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">常见异常</span>常见异常有哪些？</div><div class="a"><code>ZeroDivisionError</code> 除零、<code>FileNotFoundError</code> 文件找不到、<code>ValueError</code> 无效值、<code>TypeError</code> 类型错误、<code>KeyError</code> 键不存在、<code>IndexError</code> 索引越界。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">count_words</span>统计文件单词数函数？</div><div class="a"><pre>def count_words(path):
+    contents = path.read_text()
+    words = contents.split()
+    return len(words)</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">Path列表</span><code>Path(['a.txt','b.txt'])</code> 报错？</div><div class="a"><code>Path()</code> 不接受列表，用 <code>for</code> 循环逐个处理。</div></div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> Day 4 · JSON与存储</span><span class="badge">12</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">json.dumps</span>作用是什么？</div><div class="a">把 Python 对象（列表、字典等）转成 JSON 字符串，用于保存到文件。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">json.loads</span>作用是什么？</div><div class="a">把 JSON 字符串转回 Python 对象（列表、字典等）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">load vs loads</span><code>json.load()</code> 和 <code>json.loads()</code> 区别？</div><div class="a"><code>load()</code> 接收文件对象，<code>loads()</code> 接收字符串（配合 <code>read_text()</code>）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字符串vs对象</span><code>print(contents)</code> vs <code>print(json.loads(contents))</code> 区别？</div><div class="a"><code>contents</code> 是 JSON 字符串；<code>json.loads</code> 转成 Python 对象后才能操作。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">path.exists</span><code>path.exists()</code> 要加括号？</div><div class="a"><strong>必须</strong>加括号！不加括号是"方法对象"，永远为真。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">文件大小</span><code>path.stat().st_size > 0</code> 作用？</div><div class="a">检查文件是否不为空（大于0字节），防止读取空文件报错。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">空文件处理</span>JSON 文件为空怎么办？</div><div class="a"><pre>if path.exists() and path.stat().st_size > 0:
+    names = json.loads(path.read_text())
+else:
+    names = {}</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">存什么不需要JSON</span>什么情况不需要 JSON？</div><div class="a">单个值直接 <code>write_text()</code> 和 <code>read_text()</code> 即可。字典/列表才用 JSON。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">JSON文件内容</span>字典存成 JSON 后文件里什么样？</div><div class="a"><code>{"name": "Alice", "age": 25}</code> JSON 字符串，不是 Python 字典。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">用户数据</span>记住用户的程序怎么写？</div><div class="a"><pre>if path.exists():
+    username = json.loads(path.read_text())
+    print(f"Welcome back, {username}!")
+else:
+    username = input("What is your name? ")
+    path.write_text(json.dumps(username))</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">重构</span>怎么把代码重构为多个函数？</div><div class="a">拆分为 <code>get_stored_username()</code>、<code>get_new_username()</code>、<code>greet_user()</code> 三个函数。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">JSONDecodeError</span>文件内容损坏怎么办？</div><div class="a">加 <code>try-except</code> 保护：<code>except json.JSONDecodeError: names = {}</code></div></div>
+      </div>
+    </div>
