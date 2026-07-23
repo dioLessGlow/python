@@ -1,0 +1,385 @@
+{
+  "nodes": [
+    {
+      "id": "d1",
+      "type": "file",
+      "file": "Day_1__基础入门.md",
+      "x": 50,
+      "y": 50,
+      "width": 250,
+      "height": 100
+    },
+    {
+      "id": "d2",
+      "type": "file",
+      "file": "Day_2__循环与函数.md",
+      "x": 350,
+      "y": 50,
+      "width": 250,
+      "height": 100
+    },
+    {
+      "id": "d3",
+      "type": "file",
+      "file": "Day_3__文件与异常.md",
+      "x": 650,
+      "y": 50,
+      "width": 250,
+      "height": 100
+    },
+    {
+      "id": "d4",
+      "type": "file",
+      "file": "Day_4__JSON与存储.md",
+      "x": 950,
+      "y": 50,
+      "width": 250,
+      "height": 100
+    },
+    {
+      "id": "c1",
+      "type": "file",
+      "file": "第1章__起步.md",
+      "x": 50,
+      "y": 250,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "c2",
+      "type": "file",
+      "file": "第2章__变量和简单数据类型.md",
+      "x": 300,
+      "y": 250,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "c3",
+      "type": "file",
+      "file": "第3章__列表简介.md",
+      "x": 550,
+      "y": 250,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "c4",
+      "type": "file",
+      "file": "第4章__操作列表.md",
+      "x": 800,
+      "y": 250,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "c5",
+      "type": "file",
+      "file": "第5章__if语句.md",
+      "x": 50,
+      "y": 430,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "c6",
+      "type": "file",
+      "file": "第6章__字典.md",
+      "x": 300,
+      "y": 430,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "c7",
+      "type": "file",
+      "file": "第7章__用户输入和while循环.md",
+      "x": 550,
+      "y": 430,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "c8",
+      "type": "file",
+      "file": "第8章__函数.md",
+      "x": 800,
+      "y": 430,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "c9",
+      "type": "file",
+      "file": "第9章__类.md",
+      "x": 50,
+      "y": 610,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "c10",
+      "type": "file",
+      "file": "第10章__文件和异常.md",
+      "x": 300,
+      "y": 610,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "c11",
+      "type": "file",
+      "file": "第11章__测试代码.md",
+      "x": 550,
+      "y": 610,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "ap",
+      "type": "file",
+      "file": "附录.md",
+      "x": 50,
+      "y": 790,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "p1",
+      "type": "file",
+      "file": "项目1__外星人入侵（Pygame）.md",
+      "x": 550,
+      "y": 790,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "p2",
+      "type": "file",
+      "file": "项目2__数据可视化.md",
+      "x": 800,
+      "y": 790,
+      "width": 220,
+      "height": 80
+    },
+    {
+      "id": "p3",
+      "type": "file",
+      "file": "项目3__Web应用程序（Django）.md",
+      "x": 1050,
+      "y": 790,
+      "width": 220,
+      "height": 80
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_d1_c2",
+      "fromNode": "d1",
+      "fromSide": "bottom",
+      "toNode": "c2",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_d1_c3",
+      "fromNode": "d1",
+      "fromSide": "bottom",
+      "toNode": "c3",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_d1_c6",
+      "fromNode": "d1",
+      "fromSide": "bottom",
+      "toNode": "c6",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_d2_c7",
+      "fromNode": "d2",
+      "fromSide": "bottom",
+      "toNode": "c7",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_d2_c8",
+      "fromNode": "d2",
+      "fromSide": "bottom",
+      "toNode": "c8",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_d3_c10",
+      "fromNode": "d3",
+      "fromSide": "bottom",
+      "toNode": "c10",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_d4_c10",
+      "fromNode": "d4",
+      "fromSide": "bottom",
+      "toNode": "c10",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_c1_c2",
+      "fromNode": "c1",
+      "fromSide": "right",
+      "toNode": "c2",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_c2_c3",
+      "fromNode": "c2",
+      "fromSide": "right",
+      "toNode": "c3",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_c3_c4",
+      "fromNode": "c3",
+      "fromSide": "right",
+      "toNode": "c4",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_c4_c5",
+      "fromNode": "c4",
+      "fromSide": "bottom",
+      "toNode": "c5",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_c5_c6",
+      "fromNode": "c5",
+      "fromSide": "right",
+      "toNode": "c6",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_c6_c7",
+      "fromNode": "c6",
+      "fromSide": "right",
+      "toNode": "c7",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_c7_c8",
+      "fromNode": "c7",
+      "fromSide": "right",
+      "toNode": "c8",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_c8_c9",
+      "fromNode": "c8",
+      "fromSide": "bottom",
+      "toNode": "c9",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_c9_c10",
+      "fromNode": "c9",
+      "fromSide": "right",
+      "toNode": "c10",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_c10_c11",
+      "fromNode": "c10",
+      "fromSide": "right",
+      "toNode": "c11",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_c2_c6",
+      "fromNode": "c2",
+      "fromSide": "bottom",
+      "toNode": "c6",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_c5_c7",
+      "fromNode": "c5",
+      "fromSide": "bottom",
+      "toNode": "c7",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_c8_c11",
+      "fromNode": "c8",
+      "fromSide": "bottom",
+      "toNode": "c11",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_c9_p1",
+      "fromNode": "c9",
+      "fromSide": "bottom",
+      "toNode": "p1",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_c10_p2",
+      "fromNode": "c10",
+      "fromSide": "bottom",
+      "toNode": "p2",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_c11_p3",
+      "fromNode": "c11",
+      "fromSide": "bottom",
+      "toNode": "p3",
+      "toSide": "top",
+      "label": ""
+    },
+    {
+      "id": "e_ap_p1",
+      "fromNode": "ap",
+      "fromSide": "right",
+      "toNode": "p1",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_ap_p2",
+      "fromNode": "ap",
+      "fromSide": "right",
+      "toNode": "p2",
+      "toSide": "left",
+      "label": ""
+    },
+    {
+      "id": "e_ap_p3",
+      "fromNode": "ap",
+      "fromSide": "right",
+      "toNode": "p3",
+      "toSide": "left",
+      "label": ""
+    }
+  ]
+}
