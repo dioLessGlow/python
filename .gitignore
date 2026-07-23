@@ -1,0 +1,6 @@
+﻿*.pdf
+参考资料/
+历史备份/
+__pycache__/
+*.pyc
+.vscode/
