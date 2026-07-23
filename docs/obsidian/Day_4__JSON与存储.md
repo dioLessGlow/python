@@ -47,3 +47,6 @@ else:
 
 **JSONDecodeError文件内容损坏怎么办？**
 加 `try-except` 保护：`except json.JSONDecodeError: names = {}`
+
+## 相关链接
+- [[第10章 · 文件和异常]]

@@ -56,3 +56,6 @@ def count_words(path):
 
 **Path列表`Path(['a.txt','b.txt'])` 报错？**
 `Path()` 不接受列表，用 `for` 循环逐个处理。
+
+## 相关链接
+- [[第10章 · 文件和异常]]

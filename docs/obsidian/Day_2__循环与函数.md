@@ -46,3 +46,7 @@ def send_messages(messages, sent_messages):
 
 **多重退出两个输入都要判断 `q` 退出？**
 每个输入都要单独判断 `if name == 'q': break`
+
+## 相关链接
+- [[第7章 · 用户输入和while循环]]
+- [[第8章 · 函数]]
