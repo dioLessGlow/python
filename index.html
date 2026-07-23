@@ -170,6 +170,27 @@
     font-weight: 400;
   }
 
+  .exer {
+    background: #f0f8f0;
+    border-top: 2px solid #1a7f37;
+    border-radius: 0 0 6px 6px;
+  }
+  .exer .q .tag {
+    background: #1a7f37;
+    color: #fff;
+  }
+  .exer .a ol {
+    margin: 4px 0 4px 20px;
+  }
+  .exer .a li {
+    margin-bottom: 4px;
+  }
+  .exer .a ul {
+    margin: 2px 0 2px 20px;
+  }
+  .exer .a code {
+    background: #dafbe1;
+  }
   @media (max-width: 600px) {
     body { padding: 10px; }
     .tab { font-size: 13px; padding: 10px 6px; }
@@ -384,6 +405,16 @@ else:
           <div class="q"><span class="tag">小结</span>本章目标</div>
           <div class="a">搭建好 Python 编程环境，成功运行第一个 Python 程序。</div>
         </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>搭建你的第一个 Python 项目</div>
+          <div class="a">编写程序 <code>my_info.py</code>，完成以下功能：
+<ol>
+  <li>在终端打印 <code>Hello, Python!</code></li>
+  <li>创建变量 <code>name</code> 存储你的名字，<code>age</code> 存储你的年龄，并用 f-string 输出 <code>我叫XX，今年XX岁</code></li>
+  <li>使用 <code>input()</code> 让用户输入喜欢的编程语言，输出 <code>你也喜欢XX啊！</code></li>
+  <li>给代码添加注释说明每步的作用</li>
+</ol></div>
+        </div>
       </div>
     </div>
 
@@ -477,6 +508,17 @@ else:
           <div class="q"><span class="tag">错误</span>常见的 NameError</div>
           <div class="a">变量名拼写错误、未定义就使用、字符串忘了加引号 都会引发 <code>NameError</code></div>
         </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>个人信息格式化输出</div>
+          <div class="a">编写程序 <code>profile.py</code>，完成以下功能：
+<ol>
+  <li>定义变量存储：姓名（<code>name</code>）、年龄（<code>age</code>）、城市（<code>city</code>）、职业（<code>job</code>）</li>
+  <li>使用 f-string 输出格式化的个人信息卡片</li>
+  <li>将姓名转为全大写、全小写、首字母大写三种格式并输出</li>
+  <li>输入一个数字，分别用 <code>/</code>、<code>//</code>、<code>%</code> 运算并解释结果</li>
+  <li>去除字符串 <code>'  Python is fun!  '</code> 两端的空格，替换 <code>fun</code> 为 <code>amazing</code></li>
+</ol></div>
+        </div>
       </div>
     </div>
 
@@ -546,6 +588,18 @@ else:
         <div class="qa-item">
           <div class="q"><span class="tag">推导式</span>列表推导式</div>
           <div class="a"><code>[x**2 for x in range(1, 6)]</code> → 生成 <code>[1, 4, 9, 16, 25]</code>。遍历打印每个元素不会显示引号。</div>
+        </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>嘉宾名单管理系统</div>
+          <div class="a">编写程序 <code>guests.py</code>，完成以下功能：
+<ol>
+  <li>创建一个嘉宾名单列表：<code>['Alice', 'Bob', 'Charlie', 'Diana']</code></li>
+  <li>打印第1位和最后1位嘉宾</li>
+  <li>用 <code>insert()</code> 在开头添加 <code>'Eve'</code>，用 <code>append()</code> 在末尾添加 <code>'Frank'</code></li>
+  <li>使用 <code>pop()</code> 移除最后一位嘉宾并打印"XX 无法参加"</li>
+  <li>使用 <code>sort()</code> 排序后输出，再用 <code>sorted()</code> 反向排序输出（不改变原列表）</li>
+  <li>使用切片复制一份新名单，在新名单中修改一个名字，证明两个列表独立</li>
+</ol></div>
         </div>
       </div>
     </div>
@@ -628,6 +682,18 @@ else:
         <div class="qa-item">
           <div class="q"><span class="tag">统计</span>列表统计计算</div>
           <div class="a"><code>min(digits)</code> <code>max(digits)</code> <code>sum(digits)</code></div>
+        </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>数字统计与分析</div>
+          <div class="a">编写程序 <code>stats.py</code>，完成以下功能：
+<ol>
+  <li>使用 <code>range()</code> 生成 1~20 的整数列表</li>
+  <li>用 <code>for</code> 循环遍历列表，打印每个数的平方</li>
+  <li>用列表推导式生成 1~10 的立方列表</li>
+  <li>使用切片获取列表的前5个、中间5个、最后5个元素</li>
+  <li>用 <code>min()</code>、<code>max()</code>、<code>sum()</code> 统计该列表</li>
+  <li>创建一个元组存储一周7天的名称，尝试修改第1个元素观察报错</li>
+</ol></div>
         </div>
       </div>
     </div>
@@ -714,6 +780,25 @@ else: print("儿童/婴儿")</pre>
         <div class="qa-item">
           <div class="q"><span class="tag">格式</span>5.5 设置 if 语句的格式</div>
           <div class="a">在比较运算符两边各加一个空格：<code>if age >= 18:</code> 而不是 <code>if age>=18:</code></div>
+        </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>电影票价格计算器</div>
+          <div class="a">编写程序 <code>ticket.py</code>，完成以下功能：
+<ol>
+  <li>提示用户输入年龄，根据以下规则输出票价：
+    <ul>
+      <li>0~2岁：免费（0元）</li>
+      <li>3~12岁：半价（30元）</li>
+      <li>13~17岁：优惠价（45元）</li>
+      <li>18~64岁：全价（60元）</li>
+      <li>65岁以上：免费（0元）</li>
+    </ul>
+  </li>
+  <li>使用 <code>if-elif-else</code> 实现，条件从大到小排列</li>
+  <li>使用 <code>and</code> 实现区间判断的另一种写法</li>
+  <li>验证输入是否为数字（用 <code>isdigit()</code>）</li>
+  <li>创建一个用户列表，用 <code>in</code> / <code>not in</code> 检查 VIP 用户</li>
+</ol></div>
         </div>
       </div>
     </div>
@@ -809,6 +894,19 @@ else: print("儿童/婴儿")</pre>
           <div class="q"><span class="tag">set()</span>去重取值</div>
           <div class="a"><code>set(dict.values())</code> 获取不重复的值列表</div>
         </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>通讯录管理系统</div>
+          <div class="a">编写程序 <code>contacts.py</code>，完成以下功能：
+<ol>
+  <li>创建一个字典存储通讯录，格式：<code>{'name': {'tel': 'xxx', 'email': 'xxx'}}</code></li>
+  <li>添加3个人的信息（至少包括姓名、电话、邮箱）</li>
+  <li>用 <code>.items()</code> 遍历打印所有人的姓名和电话</li>
+  <li>用 <code>.keys()</code> 打印所有联系人姓名</li>
+  <li>用 <code>.values()</code> 打印所有邮箱地址</li>
+  <li>修改其中一个人的电话，删除一个人的信息</li>
+  <li>使用 <code>.get()</code> 安全查询不存在的联系人（返回默认提示）</li>
+</ol></div>
+        </div>
       </div>
     </div>
 
@@ -902,6 +1000,19 @@ else:
         <div class="qa-item">
           <div class="q"><span class="tag">pop(0)</span>从列表头部移除</div>
           <div class="a"><code>list.pop(0)</code> 移除并返回第一个元素，其余元素前移。</div>
+        </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>迷你点餐系统</div>
+          <div class="a">编写程序 <code>order.py</code>，完成以下功能：
+<ol>
+  <li>创建一个菜单字典：<code>{'hamburger': 25, 'fries': 12, 'cola': 8, 'chicken': 18}</code></li>
+  <li>使用 <code>while True + break</code> 循环，让用户不断点餐</li>
+  <li>用户输入菜名加入订单，输入 <code>'q'</code> 退出</li>
+  <li>用 <code>continue</code> 处理用户输入不在菜单中的情况</li>
+  <li>点餐结束后打印订单总价</li>
+  <li>用一个空列表收集订单项，用 <code>while</code> 循环逐一弹出并打印"正在制作..."</li>
+  <li>询问是否继续点餐，用标志位 <code>active</code> 控制外循环</li>
+</ol></div>
         </div>
       </div>
     </div>
@@ -1032,6 +1143,19 @@ def b(y): a(y)   # 函数 b 内部调用函数 a</pre></div>
           <div class="q"><span class="tag">调用未定义</span>函数定义了但没调用</div>
           <div class="a">函数定义后必须显式调用才会执行，否则相当于没写。</div>
         </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>学生成绩管理系统</div>
+          <div class="a">编写程序 <code>grades.py</code>，完成以下功能（使用函数）：
+<ol>
+  <li><code>add_student(students, name, score)</code> 添加学生成绩（存入字典）</li>
+  <li><code>get_grade(score)</code> 根据分数返回等级（>=90:A, >=80:B, >=70:C, >=60:D, <60:F）</li>
+  <li><code>show_all(students)</code> 遍历打印所有学生姓名、成绩、等级</li>
+  <li><code>calc_average(students)</code> 计算全班平均分并返回</li>
+  <li><code>get_top3(students)</code> 返回前三名学生的姓名和成绩（列表）</li>
+  <li>主程序循环让用户选择功能：1.添加 2.查看 3.平均分 4.前三名 5.退出</li>
+  <li>使用 <code>*args</code> 编写一个函数计算任意数量数字的平均值</li>
+</ol></div>
+        </div>
       </div>
     </div>
 
@@ -1127,6 +1251,20 @@ class ElectricCar(Car):
         <div class="qa-item">
           <div class="q"><span class="tag">模拟实物</span>9.3.5 模拟实物</div>
           <div class="a">根据要模拟的对象设计类，可以从简单开始逐步完善。代码量超过一定规模时进行重构。</div>
+        </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>银行账户类设计</div>
+          <div class="a">编写程序 <code>bank.py</code>，完成以下功能：
+<ol>
+  <li>创建 <code>BankAccount</code> 类，属性：<code>owner</code>（账户名）、<code>balance</code>（余额，默认0）</li>
+  <li>方法 <code>deposit(amount)</code> 存款（金额必须>0）</li>
+  <li>方法 <code>withdraw(amount)</code> 取款（余额不足时提示）</li>
+  <li>方法 <code>show_balance()</code> 显示余额</li>
+  <li>方法 <code>transfer(other_account, amount)</code> 转账到其他账户</li>
+  <li>创建 <code>SavingAccount</code> 子类，增加 <code>interest_rate</code> 属性和 <code>add_interest()</code> 方法</li>
+  <li>创建两个账户实例，进行存款、取款、转账操作并打印日志</li>
+  <li>使用 <code>random.choice()</code> 随机生成账户号码</li>
+</ol></div>
         </div>
       </div>
     </div>
@@ -1265,6 +1403,20 @@ except json.JSONDecodeError:
           <div class="q"><span class="tag">load vs loads</span>区别</div>
           <div class="a"><code>json.load(f)</code> 接收文件对象；<code>json.loads(s)</code> 接收字符串。</div>
         </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>电子日记本程序</div>
+          <div class="a">编写程序 <code>diary.py</code>，完成以下功能：
+<ol>
+  <li>使用 <code>pathlib</code> 在 <code>diary/</code> 文件夹下操作文件</li>
+  <li>每天一篇日记，文件名格式：<code>YYYY-MM-DD.txt</code></li>
+  <li>写入日记用 <code>write_text()</code>（覆盖当日内容）</li>
+  <li>读取指定日期的日记，如果文件不存在用 <code>try-except</code> 处理</li>
+  <li>使用 JSON 保存日记的元数据（日期、标题、字数）到 <code>diary/index.json</code></li>
+  <li>编写 <code>list_diaries()</code> 读取 JSON 显示所有日记列表</li>
+  <li>编写 <code>count_words()</code> 统计指定日记的字数</li>
+  <li>使用 <code>pass</code> 静默处理文件不存在的异常</li>
+</ol></div>
+        </div>
       </div>
     </div>
 
@@ -1317,6 +1469,19 @@ def language_survey():
         <div class="qa-item">
           <div class="q"><span class="tag">添加新测试</span>11.2.6</div>
           <div class="a">每次为函数/类添加新功能时，都编写对应的测试。测试覆盖越全面，重构就越有信心。</div>
+        </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>为成绩管理系统编写测试</div>
+          <div class="a">编写测试文件 <code>test_grades.py</code>，为第8章的综合题编写测试：
+<ol>
+  <li>测试 <code>get_grade(95)</code> 返回 <code>'A'</code></li>
+  <li>测试 <code>get_grade(85)</code> 返回 <code>'B'</code></li>
+  <li>测试 <code>get_grade(59)</code> 返回 <code>'F'</code></li>
+  <li>测试 <code>get_grade(-5)</code> 和 <code>get_grade(105)</code> 返回 <code>'invalid'</code></li>
+  <li>测试 <code>calc_average()</code> 传入 <code>[80, 90, 100]</code> 返回 <code>90.0</code></li>
+  <li>使用 <code>@pytest.fixture</code> 创建一个包含3个学生的样本数据夹具</li>
+  <li>运行 <code>pytest</code> 确认所有测试通过</li>
+</ol></div>
         </div>
       </div>
     </div>
@@ -1373,6 +1538,18 @@ def language_survey():
             </ul>
           </div>
         </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>扩展外星人入侵游戏</div>
+          <div class="a">在第12-14章的外星人入侵项目基础上，增加以下功能：
+<ol>
+  <li>添加一种"Boss 外星人"，生命值是普通外星人的 5 倍</li>
+  <li>Boss 每隔一段时间发射子弹，玩家需要躲避</li>
+  <li>增加道具系统：击落外星人有概率掉落加速/护盾/三连发</li>
+  <li>添加音效：开枪、爆炸、道具拾取</li>
+  <li>显示游戏时长和命中率统计</li>
+  <li>将最高分保存到 JSON 文件中，跨游戏持久化</li>
+</ol></div>
+        </div>
       </div>
     </div>
 
@@ -1420,6 +1597,18 @@ def language_survey():
         <div class="qa-item">
           <div class="q"><span class="tag">Plotly</span>交互式图表</div>
           <div class="a">Plotly 能生成鼠标悬停显示数据的交互式图表，适合 Web 展示。</div>
+        </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>天气数据可视化仪表盘</div>
+          <div class="a">使用 Matplotlib 和 API 制作天气仪表盘：
+<ol>
+  <li>使用 requests 调用 OpenWeatherMap API 获取你所在城市的7天天气预报</li>
+  <li>用 Matplotlib 绘制温度折线图（最高温/最低温双线）</li>
+  <li>用散点图显示每天的湿度分布</li>
+  <li>用 Plotly 制作交互式图表，鼠标悬停显示详细数据</li>
+  <li>将图表保存为 PNG 文件</li>
+  <li>使用随机漫步生成模拟天气变化轨迹</li>
+</ol></div>
         </div>
       </div>
     </div>
@@ -1470,6 +1659,19 @@ def language_survey():
           <div class="q"><span class="tag">MVT</span>Django 架构</div>
           <div class="a"><strong>Model</strong>（数据层）→ <strong>View</strong>（业务逻辑）→ <strong>Template</strong>（展示层）</div>
         </div>
+        <div class="qa-item exer">
+          <div class="q"><span class="tag">综合题</span>搭建个人博客网站</div>
+          <div class="a">使用 Django 搭建个人博客：
+<ol>
+  <li>创建 Django 项目 <code>myblog</code> 和博客应用 <code>blog</code></li>
+  <li>定义 <code>Post</code> 模型：标题、正文、作者、发布日期、分类</li>
+  <li>实现文章列表页、详情页、分类筛选页</li>
+  <li>实现用户注册、登录、注销</li>
+  <li>登录用户才能发表文章和评论</li>
+  <li>使用 django-bootstrap5 美化页面</li>
+  <li>使用 Git 管理代码并推送到 GitHub</li>
+</ol></div>
+        </div>
       </div>
     </div>
 
@@ -1516,6 +1718,7 @@ def language_survey():
 
   </div><!-- /tab-content 2 -->
 
+  <div class="qa-item exer"><div class="q"><span class="tag">综合题</span>Git 工作流实战练习</div><div class="a">练习完整的 Git 工作流：<ol><li>初始化 Git 仓库并创建 <code>README.md</code></li><li>分三次提交：添加项目描述、安装说明、使用示例</li><li>创建 <code>dev</code> 分支并在分支上修改文件</li><li>合并 <code>dev</code> 分支到 <code>main</code>，解决可能的冲突</li><li>推送到 GitHub 远程仓库（先创建空仓库）</li><li>查看提交历史：<code>git log --oneline --graph</code></li><li>使用 <code>.gitignore</code> 忽略 <code>__pycache__/</code> 和 <code>.env</code></li><li>回退到上一个版本再恢复（<code>git reset</code> / <code>git revert</code>）</li></ol></div></div>
   <div class="footer">
     《Python编程从入门到实践（第3版）》&nbsp;·&nbsp; Eric Matthes &copy; 2026
   </div>
