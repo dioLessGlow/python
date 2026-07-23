@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Python 学习问题汇总</title>
+<title>Python 学习笔记 &amp; 知识库</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -13,19 +13,55 @@
     line-height: 1.7;
     padding: 20px;
   }
-  .container { max-width: 880px; margin: 0 auto; }
+  .container { max-width: 920px; margin: 0 auto; }
+
+  /* Navigation Tabs */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+    background: #dce6dc;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    border: 1px solid #c8d6c8;
+    border-bottom: none;
+  }
+  .tab {
+    flex: 1;
+    padding: 14px 10px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    color: #555;
+    transition: all 0.2s;
+    user-select: none;
+    border-right: 1px solid #c8d6c8;
+  }
+  .tab:last-child { border-right: none; }
+  .tab:hover { background: #c8dac8; }
+  .tab.active {
+    background: #f0f4f0;
+    color: #1a7f37;
+    box-shadow: inset 0 -3px 0 #1a7f37;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
   h1 {
     text-align: center;
-    font-size: 28px;
+    font-size: 26px;
     color: #1a7f37;
-    padding: 30px 0 10px;
+    padding: 25px 0 6px;
   }
   .subtitle {
     text-align: center;
-    color: #555;
-    font-size: 14px;
-    margin-bottom: 30px;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 20px;
   }
+
+  /* Section cards */
   .section {
     background: #fff;
     border: 1px solid #d0d7de;
@@ -38,7 +74,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 20px;
+    padding: 13px 20px;
     cursor: pointer;
     user-select: none;
     background: #f6faf6;
@@ -47,7 +83,7 @@
   }
   .section-header:hover { background: #edf4ed; }
   .section-header h2 {
-    font-size: 16px;
+    font-size: 15px;
     color: #1a7f37;
     display: flex;
     align-items: center;
@@ -56,49 +92,52 @@
   .section-header .badge {
     background: #1a7f37;
     color: #fff;
-    font-size: 11px;
-    padding: 1px 8px;
+    font-size: 10px;
+    padding: 1px 7px;
     border-radius: 10px;
     font-weight: 500;
   }
+  .section-header .meta { font-size: 12px; color: #888; }
   .section-header .arrow {
     transition: transform 0.25s;
-    color: #777;
-    font-size: 12px;
+    color: #888;
+    font-size: 11px;
   }
   .section-header .arrow.open { transform: rotate(180deg); }
   .section-body { display: none; }
   .section-body.open { display: block; }
   .qa-item {
-    padding: 12px 20px;
+    padding: 10px 20px;
     border-bottom: 1px solid #eef2ee;
   }
   .qa-item:last-child { border-bottom: none; }
   .q {
     font-weight: 600;
     color: #1f2328;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
     display: flex;
     gap: 8px;
+    font-size: 14px;
   }
   .q .tag {
     background: #d1f0d1;
     color: #1a7f37;
-    font-size: 11px;
+    font-size: 10px;
     padding: 0 6px;
     border-radius: 4px;
     font-weight: 500;
     white-space: nowrap;
-    margin-top: 2px;
+    margin-top: 3px;
   }
   .a {
     color: #444;
     padding-left: 0;
+    font-size: 14px;
   }
-  .a code {
+  .a code, .q code {
     background: #edf4ed;
-    padding: 1px 6px;
-    border-radius: 4px;
+    padding: 1px 5px;
+    border-radius: 3px;
     font-family: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
     font-size: 13px;
     color: #1a7f37;
@@ -107,15 +146,22 @@
     background: #f3f7f3;
     border: 1px solid #d0d7de;
     border-radius: 6px;
-    padding: 10px 14px;
-    margin: 6px 0;
+    padding: 8px 14px;
+    margin: 5px 0;
     overflow-x: auto;
     font-size: 13px;
     font-family: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
     line-height: 1.5;
   }
-  .error { color: #cf222e; font-weight: 500; }
-  .ok { color: #1a7f37; font-weight: 500; }
+  .kbd {
+    display: inline-block;
+    background: #f0f2f0;
+    border: 1px solid #c8d0c8;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 12px;
+    font-family: Consolas, monospace;
+  }
   .footer {
     text-align: center;
     color: #888;
@@ -123,399 +169,419 @@
     padding: 30px 0;
   }
   @media (max-width: 600px) {
-    body { padding: 12px; }
-    .section-header { padding: 12px 14px; }
-    .qa-item { padding: 10px 14px; }
+    body { padding: 10px; }
+    .tab { font-size: 13px; padding: 10px 6px; }
+    .section-header { padding: 10px 14px; }
+    .qa-item { padding: 8px 14px; }
   }
 </style>
 </head>
 <body>
 <div class="container">
-  <h1> Python 学习问题汇总</h1>
-  <p class="subtitle">从对话中整理 &#8226; 共 40+ 个问题 &#8226; 持续更新</p>
 
-  <!-- ============ 1 ============ -->
-  <div class="section">
-    <div class="section-header" onclick="toggle(this)">
-      <h2><span> 基础语法与运行</span><span class="badge">10</span></h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="section-body open">
-      <div class="qa-item">
-        <div class="q"><span class="tag">运行</span>怎么运行 .py 文件？</div>
-        <div class="a">终端执行 <code>python 文件名.py</code>，要先 <code>exit()</code> 退出交互模式。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">运行</span><code>exit()</code> / <code>Ctrl+D</code> / <code>Ctrl+Z</code> 区别？</div>
-        <div class="a"><code>exit()</code> 通用；<code>Ctrl+D</code> 是 Linux/Mac；<code>Ctrl+Z</code> + 回车是 Windows。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">终端</span><code>cd .</code> 和 <code>cd ..</code> 区别？</div>
-        <div class="a"><code>.</code> 是当前目录（不动）；<code>..</code> 是上级目录。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">终端</span><code>cd -</code> 在 PowerShell 报错？</div>
-        <div class="a">PowerShell 不支持 <code>cd -</code>，用 <code>pushd</code> / <code>popd</code> 代替。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">资源</span>Python 官网是什么？</div>
-        <div class="a"><a href="https://www.python.org" target="_blank">https://www.python.org</a></div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">彩蛋</span><code>import this</code> 是什么？</div>
-        <div class="a">Python 彩蛋，输出《Python之禅》—— 20 条编程哲学。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">编辑</span>注释快捷键是什么？</div>
-        <div class="a"><code>Ctrl+/</code> 注释/取消注释当前行或选中区域。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">版本</span>怎么查看 Python 版本？</div>
-        <div class="a"><code>python --version</code> 或 <code>python -V</code></div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">Git</span><code>bash</code> 在 Windows 提示不是内部命令？</div>
-        <div class="a">Windows 没有 bash，用 PowerShell 或 CMD。<code>git bash</code> 需要额外安装 Git。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">Git</span>LF will be replaced by CRLF 是什么？</div>
-        <div class="a">Windows 换行符警告，不影响使用。<code>git config --global core.autocrlf true</code> 可关掉提示。</div>
-      </div>
-    </div>
+  <h1> Python 学习笔记</h1>
+  <p class="subtitle">提问笔记（按天整理）+ Python知识库（按《Python编程从入门到实践》第3版整理）</p>
+
+  <!-- ============ TABS ============ -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab(0)">  提问笔记</div>
+    <div class="tab" onclick="switchTab(1)">  知识库</div>
   </div>
 
-  <!-- ============ 2 ============ -->
-  <div class="section">
-    <div class="section-header" onclick="toggle(this)">
-      <h2><span> 字符串操作</span><span class="badge">8</span></h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="section-body">
-      <div class="qa-item">
-        <div class="q"><span class="tag">大小写</span><code>a='Sgdgvd'</code>，怎么比较大小写？</div>
-        <div class="a"><code>a.lower() == 'sgdgvd'</code>，两边都转小写再比较。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">格式化</span><code>print(f"{name}.title()")</code> 没生效？</div>
-        <div class="a"><code>.title()</code> 要放在花括号内：<code>print(f"{name.title()}")</code></div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">移除</span><code>removeprefix('.txt')</code> 没去掉？</div>
-        <div class="a">应该用 <code>removesuffix('.txt')</code>，从末尾移除。removeprefix 是去掉前缀。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">链式</span><code>s.lower().title()</code> 结果是什么？</div>
-        <div class="a">先全变小写，再每个单词首字母大写。如 <code>'HELLO WORLD' → 'Hello World'</code></div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">切片</span>字符串按单词切片？</div>
-        <div class="a">先 <code>split()</code> 转成列表，切片后再 <code>join()</code> 拼接回来。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">除法</span><code>16/2</code> 输出 <code>8.0</code>，怎么输出整数？</div>
-        <div class="a">用 <code>//</code> 整除：<code>16 // 2 → 8</code>，或 <code>int(16/2) → 8</code></div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">语法</span><code>print(a)</code> 和 <code>a = print(p)</code> 区别？</div>
-        <div class="a"><code>print()</code> 只输出不返回值，返回值是 <code>None</code>。<code>a = print(p)</code> 相当于 <code>a = None</code></div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">方法</span>字符串转首字母大写的方法？</div>
-        <div class="a"><code>.title()</code> — 每个单词首字母大写；<code>.capitalize()</code> — 仅第一个字母大写。</div>
-      </div>
-    </div>
-  </div>
+  <!-- ================================================================ -->
+  <!-- TAB 1: 提问笔记（按天整理） -->
+  <!-- ================================================================ -->
+  <div class="tab-content active">
 
-  <!-- ============ 3 ============ -->
-  <div class="section">
-    <div class="section-header" onclick="toggle(this)">
-      <h2><span> 列表操作</span><span class="badge">7</span></h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="section-body">
-      <div class="qa-item">
-        <div class="q"><span class="tag">添加</span><code>name.append('ms','fs')</code> 报错？</div>
-        <div class="a"><code>append()</code> 只能加一个元素。加多个用 <code>extend([...])</code>。</div>
+    <!-- DAY 1 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> Day 1 · 基础入门</span><span class="badge">12</span></h2>
+        <span class="arrow">▼</span>
       </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">排序</span><code>print(ip.sort())</code> 输出 <code>None</code>？</div>
-        <div class="a"><code>sort()</code> 原地排序，返回 <code>None</code>。要 <code>ip.sort()</code> 再 <code>print(ip)</code>。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">排序</span><code>sort()</code> 和 <code>sort(reverse=True)</code> 多次执行？</div>
-        <div class="a">每次 <code>sort()</code> 重新排序。<code>reverse=True</code> 执行两次又回到升序。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">复制</span><code>num2 = num[:]</code> 和 <code>num2 = num</code> 区别？</div>
-        <div class="a"><code>[:]</code> 是复制新列表（独立）；<code>=</code> 是引用同一列表（一改都变）。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">转换</span><code>list(value)</code> 报错？</div>
-        <div class="a"><code>value</code> 是整数的话，<code>list()</code> 需要可迭代对象。直接用 <code>print(value)</code>。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">遍历</span><code>for i in len(alien_color)</code> 报错？</div>
-        <div class="a"><code>len()</code> 返回整数不可迭代，用 <code>range(len(...))</code>。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">推导式</span>列表推导式生成平方数，怎么去掉输出引号？</div>
-        <div class="a">不要 <code>print(整个列表)</code>，用 <code>for</code> 遍历打印每个元素。</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============ 4 ============ -->
-  <div class="section">
-    <div class="section-header" onclick="toggle(this)">
-      <h2><span> 条件判断（if-elif-else）</span><span class="badge">6</span></h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="section-body">
-      <div class="qa-item">
-        <div class="q"><span class="tag">逻辑</span><code>age >= 0</code> 导致所有年龄都是婴儿？</div>
-        <div class="a">
-          核心：<code>if-elif</code> 从上到下执行，满足一个就跳出。<br>
-          <code>age >= 0</code> 包含了所有年龄，后面永远不会执行。<br>
-          <strong>修正</strong>：条件从大到小排列或用区间：
-          <pre>if age >= 65: print('老年人')
+      <div class="section-body open">
+        <div class="qa-item"><div class="q"><span class="tag">if逻辑</span>为什么 <code>age>=0</code> 导致所有年龄都是婴儿？</div><div class="a"><code>if-elif</code> 从上到下执行，<code>age>=0</code> 包含所有年龄，后面永不执行。<br><strong>修正：</strong>条件从大到小排列或用区间判断。
+        <pre>if age >= 65: print('老年人')
 elif age >= 18: print('中青年人')
 elif age >= 13: print('少年')
 elif age >= 4:  print('儿童')
 elif age >= 2:  print('幼儿')
-else:           print('婴儿')</pre>
-        </div>
+else:           print('婴儿')</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">空列表</span>空列表 <code>users=[]</code> 怎么处理？</div><div class="a">空列表 <code>for</code> 不执行。用 <code>if not users:</code> 先判断列表是否为空。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">变量未定义</span><code>if user not in users:</code> 报错？</div><div class="a"><code>user</code> 未定义。正确：<code>if not users:</code> 判断列表是否为空。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">大小写</span>用户名比较不区分大小写？</div><div class="a">创建小写副本：<pre>current_users_lower = [u.lower() for u in current_users]
+if new_user.lower() in current_users_lower: ...</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">错误</span><code>current_users.lower()</code> 报错？</div><div class="a">列表没有 <code>.lower()</code> 方法。要逐个字符串转小写。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">列表复制</span><code>current_users[:].lower()</code> 也报错？</div><div class="a"><code>[:]</code> 复制列表，列表仍然没有 <code>.lower()</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字典添加</span><code>alien_0['x_position'] = 0</code> 是添加？</div><div class="a">键不存在→<strong>添加</strong>；键存在→<strong>修改</strong>。Python自动判断。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字典 vs 集合</span><code>{'genn','12'}</code> 报错？</div><div class="a">这是<strong>集合</strong>不是字典。字典要 <code>{'genn': '12'}</code>（冒号）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字典访问</span><code>person(xin)</code> 语法错误？</div><div class="a">字典不是函数，用 <code>person[xin]</code> 访问值。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字典索引</span><code>person[0]</code> 报错？</div><div class="a">字典用键访问，不用索引。<code>person['first_name']</code> 才对。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字典遍历</span><code>for key in person</code> vs <code>.items()</code> 区别？</div><div class="a"><code>.items()</code> 更简洁高效，直接拿到键和值。<br>写法1：<code>person[key]</code> 取值；写法2：直接拿到<code>value</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">省略标记</span><code>--snip--</code> 是什么？</div><div class="a">印刷时的省略写法，不是代码。实际运行要替换成真实内容。</div></div>
       </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">空列表</span>空列表 <code>users=[]</code> 怎么处理？</div>
-        <div class="a">
-          空列表 <code>for</code> 循环体<strong>不执行</strong>。要在循环前判断：
-          <pre>if not users:
-    print('没有用户')
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> Day 2 · 循环与函数</span><span class="badge">14</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">死循环</span><code>while num<=5: num+1</code> 死循环？</div><div class="a"><code>num+1</code> 只计算不保存。正确：<code>num += 1</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">input位置</span>input 放循环外 vs 循环里？</div><div class="a">放循环外：只问一次。放循环里：每次循环都能输入新值。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">break</span><code>while True: break</code> vs 标志位？</div><div class="a"><code>while True + break</code> 更简洁，是 Python 惯用写法。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">函数return</span><code>names('chen','hui')</code> 没输出？</div><div class="a">函数 <code>return</code> 只是交回结果，要 <code>print()</code> 才能看到。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">函数print</span><code>describe_city('csac')</code> 为什么能输出？</div><div class="a">函数内部有 <code>print()</code>，直接显示。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">return位置</span><code>return</code> 后面有 <code>print()</code> 为什么不执行？</div><div class="a"><code>return</code> 立刻结束函数，后面代码永不执行。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">引号问题</span><code>return "full_name"</code> 输出什么？</div><div class="a">返回字符串 <code>"full_name"</code> 四个字。去引号才是变量值。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">函数参数</span>参数名可以重复吗？</div><div class="a">可以，参数是"占位符"，调用时传什么变量就是什么，各自独立。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">pop移动</span>为什么要用 <code>messages.pop(0)</code> 而不是 for？</div><div class="a"><code>for</code> 只是看看不动原列表；<code>pop(0)</code> 拿出来，原列表会变，实现"移动"。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">空参数</span>函数定义了但没被调用？</div><div class="a">定义了没调用相当于白写，函数不会自动执行。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">练习8.9</span>show_messages() 怎么打印全部消息？</div><div class="a">用 <code>print(message)</code> 不要用 <code>return message</code>，return 只返第一个。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">练习8.10</span>send_messages() 怎么写？</div><div class="a"><pre>def send_messages(messages, sent_messages):
+    while messages:
+        msg = messages.pop(0)
+        sent_messages.append(msg)</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">变量赋值</span><code>names[name]=contents</code> 报错？</div><div class="a"><code>name</code> 变量没定义。应该是输入变量 <code>name</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">多重退出</span>两个输入都要判断 <code>q</code> 退出？</div><div class="a">每个输入都要单独判断 <code>if name == 'q': break</code></div></div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> Day 3 · 文件与异常</span><span class="badge">13</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">rstrip</span><code>.rstrip()</code> 作用？</div><div class="a">去掉字符串末尾的空白字符（换行、空格等）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">splitlines</span><code>lines = contents.splitlines().lstrip()</code> 报错？</div><div class="a"><code>splitlines()</code> 返回列表，列表没有 <code>.lstrip()</code>。要逐行处理。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">replace</span><code>test.replace('In','on')</code> 没生效？</div><div class="a">字符串不可变，<code>replace()</code> 返回新字符串，要接收：<code>test = test.replace(...)</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">write_text</span><code>path.write_text()</code> 会覆盖原内容？</div><div class="a">是的，<strong>覆盖写入</strong>。追加用 <code>with path.open('a') as f: f.write(...)</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">循环读取</span>for 循环里读文件只读了最后一个？</div><div class="a"><code>path.read_text()</code> 要放在循环<strong>内部</strong>，否则只处理最后一次。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">return位置</span><code>return</code> 在 for 循环里只能用一次？</div><div class="a"><code>return</code> 立即结束函数和循环。要全部返回用列表收集后在外 return。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">文件追加</span>怎么往文件追加内容？</div><div class="a"><pre>with path.open('a', encoding='utf-8') as f:
+    f.write('新内容\n')</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字符串拼接</span><code>contents += names + '\n'</code> 要 str() 吗？</div><div class="a"><code>input()</code> 返回字符串，直接拼即可，不需要 <code>str()</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">ZeroDivisionError</span>除零错误怎么处理？</div><div class="a"><pre>try:
+    answer = a / b
+except ZeroDivisionError:
+    print("不能除以零")</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">FileNotFoundError</span>文件不存在时怎么静默处理？</div><div class="a"><pre>try:
+    contents = path.read_text()
+except FileNotFoundError:
+    pass    # 静默跳过</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">常见异常</span>常见异常有哪些？</div><div class="a"><code>ZeroDivisionError</code> 除零、<code>FileNotFoundError</code> 文件找不到、<code>ValueError</code> 无效值、<code>TypeError</code> 类型错误、<code>KeyError</code> 键不存在、<code>IndexError</code> 索引越界。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">count_words</span>统计文件单词数函数？</div><div class="a"><pre>def count_words(path):
+    contents = path.read_text()
+    words = contents.split()
+    return len(words)</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">Path列表</span><code>Path(['a.txt','b.txt'])</code> 报错？</div><div class="a"><code>Path()</code> 不接受列表，用 <code>for</code> 循环逐个处理。</div></div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> Day 4 · JSON与存储</span><span class="badge">12</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">json.dumps</span>作用是什么？</div><div class="a">把 Python 对象（列表、字典等）转成 JSON 字符串，用于保存到文件。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">json.loads</span>作用是什么？</div><div class="a">把 JSON 字符串转回 Python 对象（列表、字典等）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">load vs loads</span><code>json.load()</code> 和 <code>json.loads()</code> 区别？</div><div class="a"><code>load()</code> 接收文件对象，<code>loads()</code> 接收字符串（配合 <code>read_text()</code>）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字符串vs对象</span><code>print(contents)</code> vs <code>print(json.loads(contents))</code> 区别？</div><div class="a"><code>contents</code> 是 JSON 字符串；<code>json.loads</code> 转成 Python 对象后才能操作。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">path.exists</span><code>path.exists()</code> 要加括号？</div><div class="a"><strong>必须</strong>加括号！不加括号是"方法对象"，永远为真。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">文件大小</span><code>path.stat().st_size > 0</code> 作用？</div><div class="a">检查文件是否不为空（大于0字节），防止读取空文件报错。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">空文件处理</span>JSON 文件为空怎么办？</div><div class="a"><pre>if path.exists() and path.stat().st_size > 0:
+    names = json.loads(path.read_text())
 else:
-    for user in users:
-        ...</pre>
-          用 <code>not users</code> 判断列表是否为空。
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">大小写</span>用户名比较不区分大小写？</div>
-        <div class="a">
-          创建全小写副本再比较：
-          <pre>current_users_lower = [u.lower() for u in current_users]
-if new_user.lower() in current_users_lower:
-    print('已存在')</pre>
-          <code>.lower()</code> 只能用于字符串，不能用于列表。
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">错误</span><code>a_0={'genn','12'}</code> 报错？</div>
-        <div class="a">
-          这是<strong>集合（set）</strong>不是字典！<br>
-          集合用逗号分隔元素，字典用冒号分隔键值：<code>{'genn': '12'}</code>
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">语法</span><code>===</code> 在 Python 中报错？</div>
-        <div class="a">Python <strong>没有 <code>===</code></strong>，只有 <code>==</code>（等于）和 <code>!=</code>（不等于）。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">调试</span>截图里红色 <code>False</code> 是什么？</div>
-        <div class="a">VS Code Code Runner 扩展的运行结果输出，不是代码本身。</div>
+    names = {}</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">存什么不需要JSON</span>什么情况不需要 JSON？</div><div class="a">单个值直接 <code>write_text()</code> 和 <code>read_text()</code> 即可。字典/列表才用 JSON。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">JSON文件内容</span>字典存成 JSON 后文件里什么样？</div><div class="a"><code>{"name": "Alice", "age": 25}</code> JSON 字符串，不是 Python 字典。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">用户数据</span>记住用户的程序怎么写？</div><div class="a"><pre>if path.exists():
+    username = json.loads(path.read_text())
+    print(f"Welcome back, {username}!")
+else:
+    username = input("What is your name? ")
+    path.write_text(json.dumps(username))</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">重构</span>怎么把代码重构为多个函数？</div><div class="a">拆分为 <code>get_stored_username()</code>、<code>get_new_username()</code>、<code>greet_user()</code> 三个函数，各司其职。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">JSONDecodeError</span>文件内容损坏怎么办？</div><div class="a">加 <code>try-except</code> 保护：<code>except json.JSONDecodeError: names = {}</code></div></div>
       </div>
     </div>
-  </div>
 
-  <!-- ============ 5 ============ -->
-  <div class="section">
-    <div class="section-header" onclick="toggle(this)">
-      <h2><span> 字典操作</span><span class="badge">10</span></h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="section-body">
-      <div class="qa-item">
-        <div class="q"><span class="tag">基础</span>字典怎么添加键值对？</div>
-        <div class="a"><code>字典[键] = 值</code>：键不存在就<strong>添加</strong>，存在则<strong>修改</strong>。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">访问</span><code>person[0]</code> 报错？</div>
-        <div class="a">字典<strong>用键访问</strong>，不是索引。<code>person['first_name']</code> 才对。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">遍历</span>遍历字典的三种方法？</div>
-        <div class="a">
-          <pre>for k in d:           # 只遍历键
-for k in d.keys():   # 同上，显式写法
-for v in d.values(): # 只遍历值
-for k, v in d.items(): # 同时遍历键和值  ✅ 最常用</pre>
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">嵌套</span><code>cities={vs1:...}</code> 报错？</div>
-        <div class="a">键是字符串要加引号：<code>'vs1': {'xb1': '631'}</code></div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">方法</span><code>.items()</code> 是什么？</div>
-        <div class="a">
-          返回所有键值对组成的视图对象，每个元素是 <code>(键, 值)</code> 元组。<br>
-          配合 <code>for k, v in dict.items():</code> 同时拿到键和值。
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">方法</span><code>.keys()</code> 和 <code>.values()</code> 区别？</div>
-        <div class="a"><code>.keys()</code> 返回所有键；<code>.values()</code> 返回所有值；<code>.items()</code> 返回所有键值对。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">错误</span><code>person(xin)</code> 语法错误？</div>
-        <div class="a">字典不是函数，不能用 <code>()</code> 调用。正确：<code>person[xin]</code></div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">遍历</span><code>for key in person:</code> 和 <code>for k,v in person.items():</code> 区别？</div>
-        <div class="a">
-          结果一样，但 <code>.items()</code> 更简洁、效率略高、可读性更好。<br>
-          写法1：<code>person[key]</code> 取值；写法2：直接拿到值。
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">副本</span>为什么要创建 <code>current_users_lower</code> 副本？</div>
-        <div class="a">
-          原列表 <code>current_users</code> 是大小写混合，不能直接 <code>.lower()</code>（列表无此方法）。<br>
-          创建副本 <code>[u.lower() for u in current_users]</code>，里面每个字符串转小写，再用副本比较。
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">字典 vs 集合</span><code>{'a', 'b'}</code> 和 <code>{'a': 'b'}</code> 区别？</div>
-        <div class="a"><code>{'a', 'b'}</code> 是集合（Set），无序不重复；<code>{'a': 'b'}</code> 是字典，键值对。</div>
-      </div>
-    </div>
-  </div>
+  </div><!-- /tab-content 1 -->
 
-  <!-- ============ 6 ============ -->
-  <div class="section">
-    <div class="section-header" onclick="toggle(this)">
-      <h2><span> 输入与循环</span><span class="badge">7</span></h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="section-body">
-      <div class="qa-item">
-        <div class="q"><span class="tag">输入</span><code>input()</code> 怎么用？</div>
-        <div class="a">
-          <pre>name = input("提示文字：")  # 返回字符串
-age = int(input("年龄："))  # 转整数</pre>
-          程序暂停，等待用户输入，按回车继续。
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">类型</span><code>input()</code> 返回什么类型？</div>
-        <div class="a"><strong>字符串</strong> <code>str</code>。需要数字必须手动转换：<code>int()</code> 或 <code>float()</code></div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">死循环</span><code>while num<=5: num+1</code> 死循环？</div>
-        <div class="a">
-          <code>num + 1</code> 只计算不保存！<code>num</code> 永远是 1。<br>
-          正确：<code>num = num + 1</code> 或 <code>num += 1</code>
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">遍历</span><code>for value in range(1,5): print(list(value))</code> 报错？</div>
-        <div class="a"><code>value</code> 是整数，<code>list()</code> 需要可迭代对象。<code>list(range(1,5))</code> 才对。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">输入判断</span>输入数字后怎么条件判断？</div>
-        <div class="a">
-          <pre>person = input('多少人用餐？')
-if person.isdigit():        # 先判断是否数字
-    if int(person) > 8:
-        print('没有空桌')
-    else:
-        print('有空桌')</pre>
-          防止输入字母导致 <code>int()</code> 报错。
-        </div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">打印</span><code>print('这个用户名未被使用')</code> 没显示具体用户名？</div>
-        <div class="a">用 f-string 带上变量：<code>print(f"'{new_user}' 这个用户名未被使用")</code></div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">换行</span><code>\n</code> 和 <code>\t</code> 是什么？</div>
-        <div class="a"><code>\n</code> 是换行符；<code>\t</code> 是制表符（缩进）。</div>
-      </div>
-    </div>
-  </div>
+  <!-- ================================================================ -->
+  <!-- TAB 2: 知识库（按《Python编程从入门到实践》第3版整理） -->
+  <!-- ================================================================ -->
+  <div class="tab-content">
 
-  <!-- ============ 7 ============ -->
-  <div class="section">
-    <div class="section-header" onclick="toggle(this)">
-      <h2><span> 函数与调试</span><span class="badge">5</span></h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="section-body">
-      <div class="qa-item">
-        <div class="q"><span class="tag">函数</span><code>range(1, 5)</code> 生成什么？</div>
-        <div class="a">生成 <code>1, 2, 3, 4</code>（从1开始，到5结束，不含5）。</div>
+    <!-- 第1章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第1章 · 起步</span><span class="badge">5</span></h2>
+        <span class="arrow">▼</span>
       </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">函数</span><code>max()</code> 怎么用？</div>
-        <div class="a"><code>max()</code> 返回最大值，要用 <code>print(max(num))</code> 才能看到输出，直接写不会显示。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">语法</span><code>len()</code> 返回什么？</div>
-        <div class="a">返回整数（长度），不能直接 for 遍历。用 <code>range(len(list))</code>。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">调试</span>Python 脚本运行没任何输出？</div>
-        <div class="a">没写 <code>print()</code> 就不会有输出。Python 不会自动打印计算结果，必须显式 <code>print()</code>。</div>
-      </div>
-      <div class="qa-item">
-        <div class="q"><span class="tag">选择</span>怎么只注释部分代码？</div>
-        <div class="a">选中要注释的行，按 <code>Ctrl+/</code>（VS Code 等编辑器）。</div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">终端</span>怎么运行 .py 文件？</div><div class="a">终端执行 <code>python 文件名.py</code>（先 <code>exit()</code> 退出交互模式）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">终端</span><code>exit()</code> / <code>Ctrl+D</code> / <code>Ctrl+Z</code> 区别</div><div class="a"><code>exit()</code> 通用；<code>Ctrl+D</code> Linux/Mac；<code>Ctrl+Z</code>+回车 Windows。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">终端</span><code>cd .</code> 和 <code>cd ..</code></div><div class="a"><code>.</code> 当前目录；<code>..</code> 上级目录。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">终端</span>PowerShell 不支持 <code>cd -</code></div><div class="a">用 <code>pushd</code>/<code>popd</code> 代替 <code>cd -</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">彩蛋</span><code>import this</code> 输出什么？</div><div class="a">《Python之禅》—— 20 条 Python 编程哲学。</div></div>
       </div>
     </div>
-  </div>
 
-  <!-- ============ 8 ============ -->
-  <div class="section">
-    <div class="section-header" onclick="toggle(this)">
-      <h2><span>  书摘：Python之禅</span><span class="badge">1</span></h2>
-      <span class="arrow">▼</span>
-    </div>
-    <div class="section-body">
-      <div class="qa-item">
-        <div class="q"><span class="tag">彩蛋</span>运行 <code>import this</code> 看到什么？</div>
-        <div class="a">
-          <pre>Beautiful is better than ugly.
-Explicit is better than implicit.
-Simple is better than complex.
-Complex is better than complicated.
-Flat is better than nested.
-Sparse is better than dense.
-Readability counts.
-Special cases aren't special enough to break the rules.
-Although practicality beats purity.
-Errors should never pass silently.
-Unless explicitly silenced.
-In the face of ambiguity, refuse the temptation to guess.
-There should be one-- and preferably only one --obvious way to do it.
-Although that way may not be obvious at first unless you're Dutch.
-Now is better than never.
-Although never is often better than *right* now.
-If the implementation is hard to explain, it's a bad idea.
-If the implementation is easy to explain, it may be a good idea.
-Namespaces are one honking great idea -- let's do more of those!</pre>
-        </div>
+    <!-- 第2章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第2章 · 变量和简单数据类型</span><span class="badge">9</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">字符串</span>字符串的 .title() / .lower() / .upper()</div><div class="a"><pre>s = "hello world"
+s.title()  # "Hello World"  首字母大写
+s.lower()  # "hello world"  全小写
+s.upper()  # "HELLO WORLD"  全大写</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字符串</span>.title() 要放在花括号里</div><div class="a"><code>f"{name.title()}"</code> 才对，不是 <code>f"{name}.title()"</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字符串</span><code>removeprefix()</code> vs <code>removesuffix()</code></div><div class="a"><code>removesuffix('.txt')</code> 从末尾移除；<code>removeprefix</code> 去掉前缀。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字符串</span>链式调用 <code>s.lower().title()</code></div><div class="a">先全变小写，再每个单词首字母大写。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">字符串</span>字符串按单词切片</div><div class="a">先 <code>split()</code> 转列表，切片后 <code>join()</code> 拼回。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">数字</span><code>/</code> vs <code>//</code></div><div class="a"><code>16/2</code> → <code>8.0</code>（浮点数）；<code>16//2</code> → <code>8</code>（整数）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">注释</span>快捷键</div><div class="a"><code>Ctrl+/</code> 注释/取消注释。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">print</span><code>print(a)</code> vs <code>a=print(p)</code></div><div class="a"><code>print()</code> 返回 <code>None</code>。<code>a = print(p)</code> 相当于 <code>a = None</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">f-string</span>带引号的输出</div><div class="a"><code>f'"{city},{altion}"'</code> 外层单引号，内层双引号显示。</div></div>
       </div>
     </div>
-  </div>
+
+    <!-- 第3章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第3章 · 列表</span><span class="badge">7</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">添加</span><code>append()</code> vs <code>extend()</code></div><div class="a"><code>append()</code> 加一个元素；<code>extend([...])</code> 加多个。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">排序</span><code>sort()</code> 返回 None</div><div class="a"><code>sort()</code> 原地排序返回 <code>None</code>。先 <code>list.sort()</code> 再 <code>print(list)</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">排序</span><code>sort()</code> 和 <code>reverse=True</code> 多次执行</div><div class="a">每次 <code>sort()</code> 重新排序。<code>reverse=True</code> 两次回到升序。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">复制</span><code>[:]</code> 浅复制 vs <code>=</code> 引用</div><div class="a"><code>[:]</code> 独立副本；<code>=</code> 同一列表，一改都变。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">range</span><code>range(1,5)</code> 生成什么？</div><div class="a"><code>1, 2, 3, 4</code>（含头不含尾）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">推导式</span>列表推导式去引号</div><div class="a">不要 <code>print(整个列表)</code>，用 <code>for</code> 遍历打印每个元素。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">索引</span><code>list(value)</code> 报错</div><div class="a"><code>list()</code> 需要可迭代对象，整数不可迭代。</div></div>
+      </div>
+    </div>
+
+    <!-- 第4章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第4章 · 操作列表</span><span class="badge">3</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">遍历</span><code>for i in len(list)</code> 报错？</div><div class="a"><code>len()</code> 返回整数不可迭代，用 <code>range(len(list))</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">遍历</span><code>for value in range(1,5): print(list(value))</code> 报错？</div><div class="a"><code>value</code> 是整数，<code>list()</code> 不可迭代整数。<code>list(range(1,5))</code> 才对。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">切片</span>复制整个列表</div><div class="a"><code>list[:]</code> 创建副本，独立于原列表。</div></div>
+      </div>
+    </div>
+
+    <!-- 第5章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第5章 · if语句</span><span class="badge">6</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">执行顺序</span><code>if-elif-else</code> 怎么执行？</div><div class="a"><strong>从上到下</strong>，满足一个就跳出。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">条件设计</span>区间判断怎么写？</div><div class="a"><pre>if 0 <= age < 2: print('婴儿')
+elif 2 <= age < 4: print('幼儿')</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">空列表</span>怎么判断列表为空？</div><div class="a"><code>if not list:</code> 空列表为 False，非空为 True。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">成员判断</span><code>in</code> 和 <code>not in</code></div><div class="a"><code>if user in users:</code> 判断 user 是否在 users 里。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">大小写</span>忽略大小写比较</div><div class="a">两边都转小写：<code>user.lower() == stored_user.lower()</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">===</span>Python 有 <code>===</code> 吗？</div><div class="a">没有，只有 <code>==</code>（等于）和 <code>!=</code>（不等于）。</div></div>
+      </div>
+    </div>
+
+    <!-- 第6章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第6章 · 字典</span><span class="badge">12</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">创建</span>字典 vs 集合区别</div><div class="a"><code>{'a': 'b'}</code> 字典（冒号）；<code>{'a', 'b'}</code> 集合（逗号）。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">添加/修改</span><code>dict[key] = value</code></div><div class="a">键不存在→<strong>添加</strong>；键已存在→<strong>修改</strong>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">访问</span>字典不能用索引</div><div class="a">用 <code>dict['key']</code> 访问，不是 <code>dict[0]</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">调用</span>字典不能用 <code>()</code></div><div class="a">字典不是函数，<code>dict(x)</code> 是错误。用 <code>dict[x]</code> 或 <code>dict.get(x)</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">遍历</span>三种遍历方式</div><div class="a"><pre>for k in d:          # 键
+for v in d.values(): # 值
+for k,v in d.items(): # 键和值 ⭐</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">.items()</span>返回什么？</div><div class="a">返回 <code>dict_items([(k1,v1), (k2,v2)])</code>，每个元素是键值对元组。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">嵌套</span>字典里的值也是字典</div><div class="a"><pre>cities = {
+    'vs1': {'xb1': '631'},
+    'vs2': {'xb2': '632'}
+}</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">键名</span>字典键要加引号</div><div class="a"><code>{vs1: ...}</code> 报错，vs1 被当变量。<code>{'vs1': ...}</code> 才是字符串键。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">合并</span>遍历嵌套字典</div><div class="a"><pre>for city, info in cities.items():
+    for key, value in info.items():
+        print(f"{key}: {value}")</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">集合转字典</span><code>{'a','b'}</code> 是集合，不能 <code>['key']</code> 赋值</div><div class="a">集合无 <code>[]</code> 操作。字典才能 <code>dict['key'] = value</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">values()</span>注意拼写</div><div class="a">是 <code>.values()</code> 不是 <code>.value()</code>，记得加 s。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">keys()</span>和省略写法的区别</div><div class="a"><code>for k in dict</code> 默认遍历键，和 <code>for k in dict.keys()</code> 一样。</div></div>
+      </div>
+    </div>
+
+    <!-- 第7章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第7章 · 用户输入和while循环</span><span class="badge">7</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">input</span><code>input()</code> 用法</div><div class="a"><div class="a"><code>变量 = input("提示：")</code> 返回<strong>字符串</strong>。</div></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">类型转换</span>数字要 <code>int()</code></div><div class="a"><code>age = int(input("年龄："))</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">input位置</span>放循环外 vs 循环里</div><div class="a">外部：只问一次；内部：每次循环都能输入新值。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">死循环</span><code>num+1</code> 没赋值</div><div class="a"><code>num += 1</code> 等价于 <code>num = num + 1</code>，必须赋值回去。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">break</span>退出循环</div><div class="a"><code>while True + break</code> 是 Python 惯用写法。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">标志位</span>用变量控制循环</div><div class="a"><pre>active = True
+while active:
+    if 条件: active = False</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">输入验证</span><code>isdigit()</code></div><div class="a"><code>if person.isdigit():</code> 先判断是否是数字，防报错。</div></div>
+      </div>
+    </div>
+
+    <!-- 第8章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第8章 · 函数</span><span class="badge">12</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">定义</span>函数结构</div><div class="a"><pre>def 函数名(参数):
+    """文档字符串"""
+    # 代码
+    return 结果</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">return</span>两大作用</div><div class="a"><strong>1.</strong> 返回结果给调用者。<br><strong>2.</strong> 立即结束函数。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">return</span>后面的代码不执行</div><div class="a"><code>return</code> 是函数终点，后面代码永不执行。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">print vs return</span>区别</div><div class="a"><code>print</code> 直接显示；<code>return</code> 交回结果，要 <code>print()</code> 才看到。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">默认值</span>参数默认值</div><div class="a"><code>def fun(a, b='默认值'):</code> 调用时可以不传 b。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">实参</span>位置实参 vs 关键字实参</div><div class="a"><code>fun('a','b')</code> 位置；<code>fun(b='b', a='a')</code> 关键字。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">返回值</span>返回字典</div><div class="a"><pre>def build_person(first, last):
+    return {'first': first, 'last': last}</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">可变参数</span><code>*args</code> 和 <code>**kwargs</code></div><div class="a"><code>*args</code> 接收元组；<code>**kwargs</code> 接收字典。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">引号变量</span><code>return "var"</code> vs <code>return var</code></div><div class="a">加引号返回字面量；不加引号返回变量值。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">参数传递</span>参数是"占位符"</div><div class="a">调用时传的变量替换参数名，参数名和变量名可以不同。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">函数调用</span>函数内调用函数</div><div class="a"><pre>def a(x): print(x)
+def b(y): a(y)   # 内部调用 a</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">列表操作</span><code>pop()</code> 实现移动元素</div><div class="a"><pre>while list_a:
+    item = list_a.pop(0)
+    list_b.append(item)</pre></div></div>
+      </div>
+    </div>
+
+    <!-- 第9章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第9章 · 类</span><span class="badge">4</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">概念</span>类是什么？</div><div class="a">类是创建对象的"蓝图"，定义对象的属性和方法。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">定义</span><pre>class Dog:
+    def __init__(self, name):
+        self.name = name
+    def sit(self):
+        print(f"{self.name} is sitting.")</pre></div><div class="a"><code>__init__</code> 是构造方法，<code>self</code> 指向实例本身。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">实例化</span><code>my_dog = Dog('Willie')</code></div><div class="a">创建实例后可以用 <code>my_dog.name</code> 和 <code>my_dog.sit()</code>。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">继承</span><pre>class SmallDog(Dog):
+    def __init__(self, name):
+        super().__init__(name)</pre></div><div class="a"><code>super()</code> 调用父类方法。</div></div>
+      </div>
+    </div>
+
+    <!-- 第10章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第10章 · 文件和异常</span><span class="badge">14</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">pathlib</span>读取文件</div><div class="a"><pre>from pathlib import Path
+path = Path('file.txt')
+contents = path.read_text()
+print(contents)</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">rstrip</span>去掉末尾空白</div><div class="a"><code>contents = path.read_text().rstrip()</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">splitlines</span>按行分割</div><div class="a"><code>lines = contents.splitlines()</code> 返回列表。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">strip</span>去掉每行两侧空白</div><div class="a"><code>line.strip()</code> 去掉首尾空白；<code>lstrip()</code> 去左侧；<code>rstrip()</code> 去右侧。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">replace</span>字符串替换</div><div class="a"><code>s = s.replace('旧', '新')</code> 返回新字符串，原不变。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">write_text</span>写入文件</div><div class="a"><code>path.write_text('内容')</code> 覆盖写入。文件不存在则自动创建。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">追加</span>追加写入</div><div class="a"><pre>with path.open('a') as f:
+    f.write('新内容')</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">路径</span>创建文件夹</div><div class="a"><code>path.parent.mkdir(parents=True, exist_ok=True)</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">exists</span>检查文件是否存在</div><div class="a"><code>path.exists()</code> 必须加括号。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">文件大小</span><code>path.stat().st_size</code></div><div class="a">获取文件字节数，<code>> 0</code> 表示非空。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">try-except</span>异常处理结构</div><div class="a"><pre>try:
+    可能出错的代码
+except 异常类型:
+    出错处理
+else:
+    没出错时执行</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">常见异常</span>类型汇总</div><div class="a"><code>ZeroDivisionError</code>、<code>FileNotFoundError</code>、<code>ValueError</code>、<code>TypeError</code>、<code>KeyError</code>、<code>IndexError</code>、<code>JSONDecodeError</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">静默处理</span>文件不存在不报错</div><div class="a"><code>except FileNotFoundError: pass</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">计数器</span>统计文件单词数</div><div class="a"><pre>def count_words(path):
+    words = path.read_text().split()
+    return len(words)</pre></div></div>
+      </div>
+    </div>
+
+    <!-- 第11章 -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <h2><span> 第11章 · 测试代码 + JSON存储</span><span class="badge">10</span></h2>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="qa-item"><div class="q"><span class="tag">JSON</span><code>json.dumps()</code></div><div class="a">Python对象 → JSON字符串。<code>json.dumps(列表/字典)</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">JSON</span><code>json.loads()</code></div><div class="a">JSON字符串 → Python对象。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">JSON</span><code>load</code> vs <code>loads</code></div><div class="a"><code>load(f)</code> 读文件对象；<code>loads(s)</code> 读字符串。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">JSON</span><code>dump</code> vs <code>dumps</code></div><div class="a"><code>dump(obj, f)</code> 直接写入文件；<code>dumps(obj)</code> 返回字符串。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">JSON</span>格式化输出</div><div class="a"><code>json.dumps(data, indent=4)</code> 缩进4格，更易读。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">存储</span>记住用户数据</div><div class="a"><pre>if path.exists():
+    user = json.loads(path.read_text())
+else:
+    user = input("name:")
+    path.write_text(json.dumps(user))</pre></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">重构</span>代码拆分为函数</div><div class="a"><code>get_stored_username()</code> / <code>get_new_username()</code> / <code>greet_user()</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">空文件</span>JSON 空文件处理</div><div class="a"><code>except (FileNotFoundError, JSONDecodeError): names = {}</code></div></div>
+        <div class="qa-item"><div class="q"><span class="tag">什么时候用</span>什么情况不用 JSON</div><div class="a">单个纯字符串直接 <code>read_text()</code>/<code>write_text()</code>，不用 JSON。</div></div>
+        <div class="qa-item"><div class="q"><span class="tag">多数据</span>字典存多个用户数据</div><div class="a"><pre>users = {'Alice': '25', 'Bob': '30'}
+path.write_text(json.dumps(users))
+# 读取后 for k,v in users.items():</pre></div></div>
+      </div>
+    </div>
+
+  </div><!-- /tab-content 2 -->
 
   <div class="footer">
-    整理自对话记录 &copy; 2026
+    整理自对话记录 · 《Python编程从入门到实践（第3版）》&copy; 2026
   </div>
 </div>
+
 <script>
   function toggle(header) {
     const body = header.nextElementSibling;
     const arrow = header.querySelector('.arrow');
     body.classList.toggle('open');
     arrow.classList.toggle('open');
+  }
+  function switchTab(index) {
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach(t => t.classList.remove('active'));
+    contents.forEach(c => c.classList.remove('active'));
+    tabs[index].classList.add('active');
+    contents[index].classList.add('active');
   }
 </script>
 </body>
